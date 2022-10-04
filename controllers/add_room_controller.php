@@ -5,6 +5,7 @@ declare(strict_types=1);
 require_once 'models/Category.php';
 require_once 'models/Room.php';
 require_once 'services/database.php';
+$errors =[];
 
 if (!isset($_GET['category_id'])) {
     header('Location: index.php?page=chat');
