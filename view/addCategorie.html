@@ -1,0 +1,14 @@
+<form method="POST">
+
+    <?php foreach ( $errors as $error ): ?>
+        <p> <?= htmlentities($error) ?></p>
+    <?php endforeach ?>
+
+    <fieldset>
+        <legend> Ajouter une catégorie </legend>
+        <label for="name"> nom </label>
+        <input type="text" name="name" id="name" value="<?= htmlentities($toto->getName()) ?> ">
+    </fieldset>
+
+    <button type="submit"> Validé </button>
+</form>

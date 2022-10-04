@@ -1,0 +1,15 @@
+<div>
+    <nav>
+
+
+        <h2> Catégories</h2>
+        <?php foreach($categories as $categorie):?>
+        <div>
+            <h3>
+                <a href="index.php?page=addroom&category_id= <?=htmlentities($categorie['id'])?> "> <?=  htmlentities( $categorie['name']) ?> </a>
+            </h3>
+        </div>
+        <?php endforeach?>
+
+    </nav>
+</div>

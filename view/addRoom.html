@@ -1,0 +1,14 @@
+<form method="POST">
+
+    <?php foreach ( $errors as $error ): ?>
+        <p> <?= htmlentities($error) ?></p>
+    <?php endforeach ?>
+
+    <fieldset>
+        <legend> Ajouter un salon </legend>
+        <label for="name"> nom </label>
+        <input type="text" name="name" id="name" >
+    </fieldset>
+
+    <button type="submit"> Validé </button>
+</form>
