@@ -30,4 +30,4 @@ if (isset($_POST['name'])) {
     }
 }
 
-require 'views/category/add_category.phtml';
+require 'views/category/add_category.html';

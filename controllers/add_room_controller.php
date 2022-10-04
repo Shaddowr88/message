@@ -57,4 +57,4 @@ if (isset($_POST['name'])) {
     }
 }
 
-require 'views/room/add_room.phtml';
+require 'views/room/add_room.html';

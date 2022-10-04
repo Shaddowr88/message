@@ -91,4 +91,4 @@ if (isset($_GET['room_id'])) {
     }
 }
 
-require 'views/chat/chat.phtml';
+require 'views/chat/chat.html';

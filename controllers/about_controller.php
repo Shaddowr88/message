@@ -2,4 +2,4 @@
 
 declare(strict_types=1);
 
-require 'views/about/about.phtml';
+require 'views/about/about.html';
