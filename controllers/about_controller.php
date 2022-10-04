@@ -1,3 +1,5 @@
 <?php
 
-require 'view/about.html';
+declare(strict_types=1);
+
+require 'views/about/about.phtml';

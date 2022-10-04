@@ -1,15 +1,21 @@
 <?php
 
-require_once 'configs/routesList.php';
+declare(strict_types=1);
 
-function getRoute()
+require_once './configs/settings.php';
+
+/**
+ * @return string
+ */
+function getRouteFromQuery(): string
 {
-    $controllerFolder='controllers/';
+    $controllersBasePath = 'controllers/';
 
-    $availableRouteName= array_keys(AVAILABLE_ROUTES);
+    $availableRouteNames = array_keys(AVAILABLE_ROUTES);
 
-    if(!isset($_GET['page']) || !in_array($_GET['page'],$availableRouteName)){
-        return $controllerFolder. DEFAULT_ROUTE;
+    if (!isset($_GET['page']) || !in_array($_GET['page'], $availableRouteNames, true)) {
+        return realpath($controllersBasePath . DEFAULT_ROUTE);
     }
-    return $controllerFolder. AVAILABLE_ROUTES[ $_GET['page']];
+
+    return realpath($controllersBasePath . AVAILABLE_ROUTES[$_GET['page']]);
 }

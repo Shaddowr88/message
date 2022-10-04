@@ -1,63 +1,72 @@
 <?php
-require_once 'services/db.php';
 
+declare(strict_types=1);
 
-class Message{
+require_once 'models/AbstractModel.php';
 
-    public $id = null;
-    public $roomId = null;
-    public $content = null;
-    public $pinned = false;
-    public $cretedAt = null;
-
-
-    // id
-    public function getid(){
-        return $this->id;
+class Message extends AbstractModel
+{
+    public function __construct(
+        private ?int $roomId = null,
+        private ?string $content = null,
+        private bool $pinned = false,
+        private ?\DateTime $createdAt = null,
+        ?int $id = null
+    ) {
+        parent::__construct($id);
     }
 
-    public function setid($id){
-        $this->id = $id;
-    }
-
-
-    // RoomId
-    public function getRoomId(){
+    public function getRoomId(): ?int
+    {
         return $this->roomId;
     }
 
-    public function setRoomId($roomId){
+    public function setRoomId(?int $roomId): void
+    {
         $this->roomId = $roomId;
     }
 
-
-    // content
-    public function getContent(){
+    public function getContent(): ?string
+    {
         return $this->content;
     }
 
-    public function setContent($content){
+    public function setContent(?string $content): void
+    {
         $this->content = $content;
     }
 
-    // Pinned
-    public function getPinned(){
+    public function isPinned(): bool
+    {
         return $this->pinned;
     }
 
-    public function setPinned($pinned){
+    public function setPinned(bool $pinned): void
+    {
         $this->pinned = $pinned;
     }
 
-    // CretedAt
-    public function getCretedAt(){
-        return $this->cretedAt;
+    public function getCreatedAt(): ?DateTime
+    {
+        return $this->createdAt;
     }
 
-    public function setCretedAt($cretedAt){
-        $this->cretedAt = $cretedAt;
+    public function setCreatedAt(?DateTime $createdAt): void
+    {
+        $this->createdAt = $createdAt;
     }
 
-};
+    public function validate(): array
+    {
+        $errors = [];
 
+        if (strlen($this->content) > 500) {
+            $errors[] = 'Le message ne doit pas excéder 500 caractères.';
+        }
+        if (strlen($this->content) < 1) {
+            $errors[] = 'Le message ne doit pas être vide';
+        }
 
+        return $errors;
+    }
+}

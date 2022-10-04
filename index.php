@@ -1,3 +1,7 @@
 <?php
-  require 'services/routing.php';
-  require 'view/layout.html';
+
+declare(strict_types=1);
+
+require './services/routing.php';
+
+require './views/layout.phtml';
